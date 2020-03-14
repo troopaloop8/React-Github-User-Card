@@ -56,8 +56,8 @@ class App extends React.Component {
 
   render() {
     return (
-      <div className="App">
-       Github User Cards
+      <div className="container">
+       
        <div>
          <CardList 
          userData={this.state.userData}
