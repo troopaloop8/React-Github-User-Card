@@ -67,6 +67,10 @@ class App extends React.Component {
 
   componentDidUpdate(prevProps, prevState) {
     if (prevState.myuserName !== this.state.myuserName) {
+      this.setState({
+        userData: [],
+        followData: []
+      })
       this.getUser(this.state.myuserName);
       this.getFollowing(this.state.myuserName);
     }
