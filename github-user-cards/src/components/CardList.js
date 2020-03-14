@@ -1,6 +1,6 @@
 import React from 'react'
 import GitCard from './GitCard';
-import '../App.css';
+
 
 function CardList(props) {
     console.log("CardList.js props",props)

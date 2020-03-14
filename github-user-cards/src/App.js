@@ -9,12 +9,13 @@ class App extends React.Component {
   state = {
     userData: [],
     followData: [],
-    myuserName: "troopaloop8"
+    myuserName: "troopaloop8",
+    search: ''
   }
 
   componentDidMount() {
-    this.getUser();
-    this.getFollowing();
+    this.getUser(this.state.myuserName);
+    this.getFollowing(this.state.myuserName);
   }
 
   getUser = () => {
@@ -51,12 +52,41 @@ class App extends React.Component {
     .catch(err => console.log("jt App.js: getFollowing: error", err))
   }
 
+  handleInput = e => {
+    this.setState({
+      search: e.target.value
+    })
+  }
 
+  handleSubmit = e => {
+    e.preventDefault();
+    this.setState({
+      myuserName: this.state.search
+    })
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.myuserName !== this.state.myuserName) {
+      this.getUser(this.state.myuserName);
+      this.getFollowing(this.state.myuserName);
+    }
+  }
 
 
   render() {
     return (
       <div className="container">
+        <div>
+          <form onSubmit={this.handleSubmit}>
+            <input 
+            type="text"
+            value={this.myuserName}
+            name="myuserName"
+            placeholder="enter github handle"
+            onChange={this.handleInput} />
+            <button type="submit">Get Github Data</button>
+          </form>
+        </div>
        
        <div>
          <CardList 
