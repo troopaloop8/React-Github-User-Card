@@ -80,15 +80,18 @@ class App extends React.Component {
   render() {
     return (
       <div className="container">
-        <div>
-          <form onSubmit={this.handleSubmit}>
-            <input 
+        <div className="search-bar">
+          <div>
+          <input 
             type="text"
             value={this.myuserName}
             name="myuserName"
             placeholder="enter github handle"
             onChange={this.handleInput} />
-            <button type="submit">Get Github Data</button>
+          </div>
+          <form onSubmit={this.handleSubmit}>
+            
+            <button className="button" type="submit">Get Github Data</button>
           </form>
         </div>
        
